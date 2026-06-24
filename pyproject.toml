@@ -1,0 +1,46 @@
+[project]
+name = "ember"
+version = "0.1.0"
+description = "Local search engine"
+readme = "README.md"
+authors = [
+    { name = "akarauser", email = "" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "langchain-chroma>=1.1.0",
+    "langchain-docling>=2.0.0",
+    "langchain-huggingface>=1.2.2",
+    "rank-bm25>=0.2.2",
+    "sentence-transformers>=5.6.0",
+    "streamlit>=1.58.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
+
+[project.scripts]
+ember = "ember:main"
+
+[build-system]
+requires = ["uv_build>=0.11.19,<0.12.0"]
+build-backend = "uv_build"
+
+[tool.ruff.lint]
+select = [
+    "E", # pycodestyle errors
+    "W", # pycodestyle warnings
+    "F", # Pyflakes
+    "I", # isort
+    "UP", # pyupgrade
+]
+
+ignore = [
+    "E501", # line-too-long
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
